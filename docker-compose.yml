@@ -6,6 +6,8 @@ services:
       - "3000:3000"
     environment:
       - DATABASE_URL=postgresql://root@cockroachdb:26257/defaultdb?sslmode=disable
+    depends_on:
+      - cockroachdb
   cockroachdb:
     image: cockroachdb/cockroach:v23.1.11
     command: start-single-node --insecure
